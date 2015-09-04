@@ -27,6 +27,7 @@
     "gulp-sourcemaps": "^1.5.2",
     "gulp-uglify": "^1.4.0",
     "gulp-watch": "^4.3.5",
+    "main-bower-files": "^2.9.0",
     "mongodb": "^2.0.42"
   }
 }

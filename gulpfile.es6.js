@@ -8,6 +8,7 @@ import uglify from 'gulp-uglify';
 import sourcemaps from 'gulp-sourcemaps';
 import livereload from 'gulp-livereload';
 import sass from 'gulp-sass';
+import bower from 'main-bower-files';
 
 gulp.task("server", () => {
   gulp.src("./server/bin/www")
@@ -41,6 +42,11 @@ gulp.task("sass", () => {
 gulp.task("html", () => {
   gulp.src("./client/**/*.html")
     .pipe(gulp.dest('./dist/client'))
+});
+
+gulp.task("bower", () => {
+  gulp.src(bower())
+    .pipe(gulp.dest('./dist/client/vendor'))
 });
 
 gulp.task("build", ["server", "scripts", "html", "sass"]);
