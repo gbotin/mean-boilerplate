@@ -1,7 +1,11 @@
 import gulp from 'gulp';
 import babel from 'gulp-babel';
 import watch from 'gulp-watch';
+import concat from 'gulp-concat';
+import rename from 'gulp-rename';
 import nodemon from 'gulp-nodemon';
+import uglify from 'gulp-uglify';
+import sourcemaps from 'gulp-sourcemaps';
 import livereload from 'gulp-livereload';
 import sass from 'gulp-sass';
 
@@ -16,13 +20,21 @@ gulp.task("server", () => {
 
 gulp.task("scripts", () => {
   gulp.src("./client/src/**/*.js")
-    .pipe(babel())
+    .pipe(concat('app.js'))
+    .pipe(rename({suffix: '.min'}))
+    .pipe(sourcemaps.init())
+      .pipe(babel())
+      .pipe(uglify())
+    .pipe(sourcemaps.write('../maps'))
     .pipe(gulp.dest("./dist/client/js"))
 });
 
 gulp.task("sass", () => {
   gulp.src("./client/style/**/*.{sass,scss}")
-    .pipe(sass())
+    .pipe(rename({suffix: '.min'}))
+    .pipe(sourcemaps.init())
+      .pipe(sass({outputStyle: 'compressed'}))
+    .pipe(sourcemaps.write('../maps'))
     .pipe(gulp.dest("./dist/client/css"))
 });
 
