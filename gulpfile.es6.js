@@ -14,6 +14,10 @@ import livereload from 'gulp-livereload';
 import sass from 'gulp-sass';
 import bower from 'main-bower-files';
 
+var path = {
+
+};
+
 gulp.task("clean", () => {
   del("./dist/**");
 });
@@ -35,7 +39,7 @@ gulp.task("scripts", () => {
       .pipe(babel())
       .pipe(uglify())
     .pipe(sourcemaps.write('../maps'))
-    .pipe(gulp.dest("./dist/client/js"))
+    .pipe(gulp.dest("./dist/client/js"));
 });
 
 gulp.task("sass", () => {
@@ -44,27 +48,34 @@ gulp.task("sass", () => {
     .pipe(sourcemaps.init())
       .pipe(sass({outputStyle: 'compressed'}))
     .pipe(sourcemaps.write('../maps'))
-    .pipe(gulp.dest("./dist/client/css"))
+    .pipe(gulp.dest("./dist/client/css"));
 });
 
 gulp.task("html", () => {
   gulp.src("./client/**/*.html")
     .pipe(htmlmin())
-    .pipe(gulp.dest('./dist/client'))
+    .pipe(gulp.dest('./dist/client'));
 });
 
 gulp.task("images", () => {
   gulp.src("./client/**/*.{jpg,jpeg,png,gif}")
     .pipe(imagemin())
-    .pipe(gulp.dest('./dist/client'))
+    .pipe(gulp.dest('./dist/client'));
+});
+
+gulp.task("fonts", () => {
+  gulp.src([
+    "./bower_components/font-awesome/fonts/fontawesome-webfont.*",
+    "./client/fonts/**/*"])
+    .pipe(gulp.dest('./dist/client/fonts/'));
 });
 
 gulp.task("bower", () => {
   gulp.src(bower())
-    .pipe(gulp.dest('./dist/client/vendor'))
+    .pipe(gulp.dest('./dist/client/vendor'));
 });
 
-gulp.task("build", ["server", "scripts", "html", "sass", "images", "bower"]);
+gulp.task("build", ["server", "scripts", "bower", "fonts", "html", "sass", "images"]);
 
 gulp.task("watch", () => {
   livereload.listen();
