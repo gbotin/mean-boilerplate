@@ -14,7 +14,9 @@
     "tests"
   ],
   "dependencies": {
+    "angular": "~1.4.5",
     "bootstrap": "~3.3.5",
+    "font-awesome": "~4.4.0",
     "jquery": "~2.1.4"
   },
   "overrides": {
@@ -26,6 +28,12 @@
     },
     "jquery": {
       "main": "dist/jquery.min.js"
+    },
+    "angular": {
+      "main": "angular.min.js"
+    },
+    "font-awesome": {
+      "main": "css/font-awesome.min.css"
     }
   }
 }

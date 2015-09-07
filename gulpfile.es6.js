@@ -1,14 +1,22 @@
 import gulp from 'gulp';
+import del from 'del';
 import babel from 'gulp-babel';
 import watch from 'gulp-watch';
 import concat from 'gulp-concat';
 import rename from 'gulp-rename';
 import nodemon from 'gulp-nodemon';
+import imagemin from 'gulp-imagemin';
+import size from 'gulp-size';
 import uglify from 'gulp-uglify';
+import htmlmin from 'gulp-htmlmin';
 import sourcemaps from 'gulp-sourcemaps';
 import livereload from 'gulp-livereload';
 import sass from 'gulp-sass';
 import bower from 'main-bower-files';
+
+gulp.task("clean", () => {
+  del("./dist/**");
+});
 
 gulp.task("server", () => {
   gulp.src("./server/bin/www")
@@ -41,6 +49,13 @@ gulp.task("sass", () => {
 
 gulp.task("html", () => {
   gulp.src("./client/**/*.html")
+    .pipe(htmlmin())
+    .pipe(gulp.dest('./dist/client'))
+});
+
+gulp.task("images", () => {
+  gulp.src("./client/**/*.{jpg,jpeg,png,gif}")
+    .pipe(imagemin())
     .pipe(gulp.dest('./dist/client'))
 });
 
@@ -49,7 +64,7 @@ gulp.task("bower", () => {
     .pipe(gulp.dest('./dist/client/vendor'))
 });
 
-gulp.task("build", ["server", "scripts", "html", "sass"]);
+gulp.task("build", ["server", "scripts", "html", "sass", "images", "bower"]);
 
 gulp.task("watch", () => {
   livereload.listen();
@@ -71,7 +86,7 @@ gulp.task("serve", () => {
     tasks: ["server"],
     env: { 'NODE_ENV': 'development' }
   }).on('restart', () => {
-    setTimeout(() => { livereload.reload() }, 1000);
+    setTimeout(() => { livereload.reload('/') }, 1000);
   });
 });
 
