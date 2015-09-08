@@ -17,6 +17,8 @@
   "devDependencies": {
     "babel": "^5.8.23",
     "babel-core": "^5.8.23",
+    "babelify": "^6.3.0",
+    "browserify": "^11.0.1",
     "del": "^2.0.1",
     "gulp": "^3.9.0",
     "gulp-babel": "^5.2.1",
@@ -32,6 +34,8 @@
     "gulp-uglify": "^1.4.0",
     "gulp-watch": "^4.3.5",
     "main-bower-files": "^2.9.0",
-    "mongodb": "^2.0.42"
+    "mongodb": "^2.0.42",
+    "vinyl-buffer": "^1.0.0",
+    "vinyl-source-stream": "^1.1.0"
   }
 }
