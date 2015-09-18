@@ -15,25 +15,29 @@
   ],
   "dependencies": {
     "angular": "~1.4.5",
+    "angular-ui-router": "~0.2.15",
     "bootstrap": "~3.3.5",
     "font-awesome": "~4.4.0",
     "jquery": "~2.1.4"
   },
   "overrides": {
+    "angular": {
+      "main": "angular.min.js"
+    },
+    "angular-ui-router": {
+      "main": "release/angular-ui-router.min.js"
+    },
     "bootstrap": {
       "main": [
         "dist/js/bootstrap.min.js",
         "dist/css/bootstrap.min.css"
       ]
     },
-    "jquery": {
-      "main": "dist/jquery.min.js"
-    },
-    "angular": {
-      "main": "angular.min.js"
-    },
     "font-awesome": {
       "main": "css/font-awesome.min.css"
+    },
+    "jquery": {
+      "main": "dist/jquery.min.js"
     }
   }
 }
