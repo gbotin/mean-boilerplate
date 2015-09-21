@@ -1,9 +1,11 @@
-class HomeCtrl {
+var inject = ['$scope', 'HomeService'];
 
-  constructor() {
+var HomeCtrl = [...inject, ($scope, homeService) => {
 
-  }
+  homeService.getTime();
 
-}
+  $scope.name = 'World';
+
+}];
 
 export default HomeCtrl

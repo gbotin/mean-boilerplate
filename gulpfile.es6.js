@@ -4,6 +4,7 @@ import browserify from 'browserify';
 import babelify from 'babelify';
 import babel from 'gulp-babel';
 import watch from 'gulp-watch';
+import plumber from 'gulp-plumber';
 import rename from 'gulp-rename';
 import nodemon from 'gulp-nodemon';
 import imagemin from 'gulp-imagemin';
@@ -26,6 +27,7 @@ gulp.task("server", () => {
     .pipe(gulp.dest("dist/server/bin"));
 
   gulp.src("server/**/*.js")
+    .pipe(plumber())
     .pipe(babel())
     .pipe(gulp.dest("dist/server"));
 });
@@ -34,21 +36,23 @@ gulp.task("scripts", () => {
   browserify("client/src/app.js", { debug: true })
     .transform(babelify)
     .bundle()
+    .on('error', plumber)
     .pipe(source('app.js'))
     .pipe(buffer())
     .pipe(rename({suffix: '.min'}))
     .pipe(sourcemaps.init())
       .pipe(uglify())
-    .pipe(sourcemaps.write('../maps'))
+    .pipe(sourcemaps.write('./'))
     .pipe(gulp.dest("dist/client/js"));
 });
 
 gulp.task("sass", () => {
   gulp.src("client/assets/style/**/*.{sass,scss}")
+    .pipe(plumber())
     .pipe(rename({suffix: '.min'}))
     .pipe(sourcemaps.init())
       .pipe(sass({outputStyle: 'compressed'}))
-    .pipe(sourcemaps.write('../maps'))
+    .pipe(sourcemaps.write('./'))
     .pipe(gulp.dest("dist/client/css"));
 });
 
@@ -66,9 +70,15 @@ gulp.task("fonts", () => {
 });
 
 gulp.task("html", () => {
-  gulp.src("client/**/*.html")
+  gulp.src("client/*.html")
+    .pipe(plumber())
     .pipe(htmlmin())
     .pipe(gulp.dest('dist/client'));
+
+  gulp.src("client/src/**/*.tpl.html")
+    .pipe(plumber())
+    .pipe(htmlmin())
+    .pipe(gulp.dest('dist/client/tpl'));
 });
 
 gulp.task("bower", () => {

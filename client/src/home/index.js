@@ -1,20 +1,15 @@
 import HomeCtrl from './home.ctrl'
-// import HomeStates from './home.states'
+import HomeStates from './home.states'
+import HomeService from './home.service'
 
 var homeComponent = angular.module('app.home', [
   'ui.router'
 ])
 
-.config(['$stateProvider', ($stateProvider) => {
-  $stateProvider
-    .state('home', {
-      url: '/',
-      templateUrl: './src/home/home.tpl.html',
-      controller: 'HomeCtrl'
-    });
-  }
-])
+.config(HomeStates)
 
-.controller(HomeCtrl.name, HomeCtrl);
+.controller('HomeCtrl', HomeCtrl)
+
+.factory('HomeService', HomeService);
 
 export default homeComponent;
