@@ -1,6 +1,6 @@
 var inject = ['$http'];
 
-var HomeService = [...inject, ($http) => {
+var timeService = [...inject, ($http) => {
 
   return {
 
