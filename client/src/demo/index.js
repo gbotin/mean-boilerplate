@@ -1,5 +1,5 @@
 import DemoCtrl from './controllers/DemoCtrl'
-import remoteTimeService from './services/remoteTime'
+import remoteGreet from './services/remoteGreet'
 import welcomeDirective from './directives/welcome/welcome'
 import upcaseFilter from './filters/upcase'
 import states from './states'
@@ -15,7 +15,7 @@ var demoComponent = angular.module('app.demo', [
 .controller('DemoCtrl', DemoCtrl)
 
 // Factories
-.factory('remoteTimeService', remoteTimeService)
+.factory('remoteGreet', remoteGreet)
 
 // Filters
 .filter('upcase', upcaseFilter)

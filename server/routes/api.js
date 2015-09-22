@@ -4,9 +4,9 @@ export default function() {
 
   var api = Router();
 
-  api.get('/', (req, res, next) => {
+  api.get('/greet', (req, res, next) => {
     res.json({
-      message: 'Welcome !'
+      message: 'Hello'
     });
   });
 

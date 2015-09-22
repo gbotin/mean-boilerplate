@@ -1,9 +1,9 @@
-var DemoCtrl = ['$scope', 'remoteTimeService',
-  ($scope, remoteTimeService) => {
+var DemoCtrl = ['$scope', 'remoteGreet',
+  ($scope, remoteGreet) => {
 
-    remoteTimeService.getTime()
+    remoteGreet.getGreetings()
       .then((resp) => {
-        $scope.date = resp.data.date;
+        $scope.greet = resp.data.message;
       });
 
     $scope.name = 'World';
