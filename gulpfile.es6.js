@@ -81,7 +81,7 @@ gulp.task("html", () => {
   gulp.src("client/src/**/*.html")
     .pipe(plumber())
     .pipe(htmlmin())
-    .pipe(gulp.dest('dist/client'));
+    .pipe(gulp.dest('dist/client/templates'));
 });
 
 gulp.task("inject", () => {

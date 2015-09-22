@@ -8,10 +8,19 @@ var demoComponent = angular.module('app.demo', [
   'ui.router'
 ])
 
+// States
 .config(states)
+
+// Controllers
 .controller('DemoCtrl', DemoCtrl)
+
+// Factories
 .factory('remoteTimeService', remoteTimeService)
+
+// Filters
 .filter('upcase', upcaseFilter)
+
+// Directives
 .directive('welcome', welcomeDirective);
 
 export default demoComponent;

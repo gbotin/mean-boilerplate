@@ -1,14 +1,14 @@
-var inject = ['$http'];
+var remoteTimeService = ['$http',
 
-var remoteTimeService = [...inject, ($http) => {
+  ($http) => {
 
-  return {
+    return {
 
-    getTime: () => {
-      return $http.get('http://date.jsontest.com');
+      getTime: () => {
+        return $http.get('http://date.jsontest.com');
+      }
+
     }
-
-  }
 
 }];
 

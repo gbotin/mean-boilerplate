@@ -1,11 +1,14 @@
-export default function upcaseFilter () {
+var upcaseFilter = [
+  () => {
 
-  return function(input) {
-    input = input || '';
+    return function(input) {
+      input = input || '';
 
-    var out = input.toUpperCase();
+      var out = input.toUpperCase();
 
-    return out;
-  }
+      return out;
+    }
 
-}
+}];
+
+export default upcaseFilter;
