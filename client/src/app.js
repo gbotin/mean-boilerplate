@@ -1,4 +1,4 @@
-import HomeComponent from './home'
+import demoComponent from './demo'
 
 angular.module('app', [
   'ui.router',
@@ -6,5 +6,5 @@ angular.module('app', [
 ])
 
 .config(['$urlRouterProvider', function($urlRouterProvider){
-  $urlRouterProvider.otherwise('/');
+  $urlRouterProvider.otherwise('/demo');
 }]);

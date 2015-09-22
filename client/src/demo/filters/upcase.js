@@ -1,4 +1,4 @@
-export default function upcase () {
+export default function upcaseFilter () {
 
   return function(input) {
     input = input || '';

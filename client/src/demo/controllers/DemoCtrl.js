@@ -1,11 +1,11 @@
-var inject = ['$scope'];
+var inject = ['$scope', 'remoteTimeService'];
 
-var DemoCtrl = [...inject, ($scope) => {
+var DemoCtrl = [...inject, ($scope, remoteTimeService) => {
 
-  // homeService.getTime()
-  //   .then((resp) => {
-  //     $scope.date = resp.data.date;
-  //   });
+  remoteTimeService.getTime()
+    .then((resp) => {
+      $scope.date = resp.data.date;
+    });
 
   $scope.name = 'World';
 

@@ -1,6 +1,6 @@
 var inject = ['$http'];
 
-var timeService = [...inject, ($http) => {
+var remoteTimeService = [...inject, ($http) => {
 
   return {
 
@@ -12,4 +12,4 @@ var timeService = [...inject, ($http) => {
 
 }];
 
-export default HomeService
+export default remoteTimeService

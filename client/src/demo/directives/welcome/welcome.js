@@ -1,6 +1,6 @@
-export default function homeDirective () {
+export default function welcomeDirective () {
   return {
-    templateUrl: './tpl/home/home.directive.tpl.html',
+    templateUrl: './demo/directives/welcome/welcome.html',
     replace: true
   };
 };

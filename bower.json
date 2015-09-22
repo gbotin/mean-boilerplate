@@ -21,11 +21,8 @@
     "jquery": "~2.1.4"
   },
   "overrides": {
-    "angular": {
-      "main": "angular.min.js"
-    },
-    "angular-ui-router": {
-      "main": "release/angular-ui-router.min.js"
+    "jquery": {
+      "main": "dist/jquery.min.js"
     },
     "bootstrap": {
       "main": [
@@ -33,11 +30,14 @@
         "dist/css/bootstrap.min.css"
       ]
     },
+    "angular": {
+      "main": "angular.min.js"
+    },
+    "angular-ui-router": {
+      "main": "release/angular-ui-router.min.js"
+    },
     "font-awesome": {
       "main": "css/font-awesome.min.css"
-    },
-    "jquery": {
-      "main": "dist/jquery.min.js"
     }
   }
 }
